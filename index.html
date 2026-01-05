@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FinDash - Financial Dashboard</title>
+    <script>
+      // Polyfill process for browser environments to prevent crashes
+      if (typeof process === 'undefined') {
+        window.process = { env: {} };
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --color-bg: #0f1113;
+        --color-card: #1f2128; /* Slightly lighter than bg for contrast */
+        --color-accent: #2b2f33;
+        --color-text-primary: #e2e8f0;
+        --color-text-secondary: #9fb6b2;
+        --color-border: #2b2f33;
+      }
+      .light-mode {
+        --color-bg: #f3f4f6;
+        --color-card: #ffffff;
+        --color-accent: #e5e7eb;
+        --color-text-primary: #111827;
+        --color-text-secondary: #6b7280;
+        --color-border: #e5e7eb;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--color-bg);
+        color: var(--color-text-primary);
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--color-accent); 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #4b5563; 
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              dark: {
+                bg: 'var(--color-bg)',
+                card: 'var(--color-card)',
+                accent: 'var(--color-accent)',
+                border: 'var(--color-border)'
+              },
+              primary: 'var(--color-text-primary)',
+              secondary: 'var(--color-text-secondary)',
+              brand: {
+                green: '#9fb6b2',     /* The 0% color - Light Metallic */
+                greenDark: '#727d7d', /* The 35% color - Mid Metallic */
+                lightGreen: '#b8ccc9' /* Lighter variant */
+              }
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "recharts": "https://esm.sh/recharts@^3.6.0",
+    "@google/genai": "https://esm.sh/@google/genai@^0.1.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
