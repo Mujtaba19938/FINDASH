@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Search, Bell, Mail, Sun, Moon, Check, X, AlertCircle, Info, CheckCircle, Sparkles, LogOut } from 'lucide-react';
+import { Search, Bell, Mail, Sun, Moon, Check, X, AlertCircle, Info, CheckCircle, Sparkles, LogOut, Menu } from 'lucide-react';
 import { User } from 'firebase/auth';
 import { NotificationItem } from '../types';
 
@@ -13,6 +13,8 @@ interface HeaderProps {
   onChatToggle?: () => void;
   onLogout?: () => void;
   user?: User | null;
+  onMenuToggle?: () => void;
+  isMenuOpen?: boolean;
 }
 
 const Header: React.FC<HeaderProps> = ({ 
@@ -24,7 +26,9 @@ const Header: React.FC<HeaderProps> = ({
   onClearAll,
   onChatToggle,
   onLogout,
-  user
+  user,
+  onMenuToggle,
+  isMenuOpen = false
 }) => {
   const [showNotifications, setShowNotifications] = useState(false);
   const notificationRef = useRef<HTMLDivElement>(null);
@@ -53,7 +57,17 @@ const Header: React.FC<HeaderProps> = ({
 
   return (
     <div className="flex justify-between items-center mb-8 pt-2 relative z-40">
-      <h1 className="text-3xl font-semibold text-primary tracking-tight transition-colors">{title}</h1>
+      <div className="flex items-center gap-4">
+        {/* Burger Menu Button - Mobile Only */}
+        <button
+          onClick={onMenuToggle}
+          className="md:hidden p-2.5 bg-dark-card rounded-xl text-secondary hover:text-primary transition-all hover:bg-dark-accent shadow-sm"
+          aria-label="Toggle menu"
+        >
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+        <h1 className="text-2xl md:text-3xl font-semibold text-primary tracking-tight transition-colors">{title}</h1>
+      </div>
       
       <div className="flex items-center gap-6">
         <div className="relative hidden md:block">
