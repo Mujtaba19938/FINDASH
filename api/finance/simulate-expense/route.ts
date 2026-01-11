@@ -1,8 +1,8 @@
 // Simulate Expense Change API Route - Vercel Serverless Function
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { extractUserIdFromRequest } from '../../lib/auth/verify-jwt';
-import { simulateExpenseChange } from '../../lib/analytics/simulations';
-import { validateUserId, validatePercent } from '../../lib/utils/validators';
+import { extractUserIdFromRequest } from '@/lib/auth/verify-jwt';
+import { simulateExpenseChange } from '@/lib/analytics/simulations';
+import { validateUserId, validatePercent } from '@/lib/utils/validators';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {

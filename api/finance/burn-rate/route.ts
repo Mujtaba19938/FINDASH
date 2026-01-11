@@ -1,8 +1,8 @@
 // Burn Rate API Route - Vercel Serverless Function
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { extractUserIdFromRequest } from '../../lib/auth/verify-jwt';
-import { getBurnRate } from '../../lib/analytics/burn-rate';
-import { validateUserId } from '../../lib/utils/validators';
+import { extractUserIdFromRequest } from '@/lib/auth/verify-jwt';
+import { getBurnRate } from '@/lib/analytics/burn-rate';
+import { validateUserId } from '@/lib/utils/validators';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'GET') {

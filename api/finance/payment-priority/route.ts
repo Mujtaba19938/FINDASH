@@ -1,8 +1,8 @@
 // Payment Priority API Route - Vercel Serverless Function
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { extractUserIdFromRequest } from '../../lib/auth/verify-jwt';
-import { getPaymentPriority } from '../../lib/analytics/payment-priority';
-import { validateUserId } from '../../lib/utils/validators';
+import { extractUserIdFromRequest } from '@/lib/auth/verify-jwt';
+import { getPaymentPriority } from '@/lib/analytics/payment-priority';
+import { validateUserId } from '@/lib/utils/validators';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'GET') {
