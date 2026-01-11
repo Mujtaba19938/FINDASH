@@ -1,5 +1,5 @@
 import React from 'react';
-import { LayoutDashboard, Calendar, FileText, Wallet, Settings, X } from 'lucide-react';
+import { LayoutDashboard, Calendar, FileText, Wallet, Settings } from 'lucide-react';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -43,26 +43,9 @@ const Logo: React.FC<{ size?: number; className?: string }> = ({ size = 24, clas
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggle, activePage, onNavigate }) => {
   return (
-    <>
-      {/* Mobile Overlay */}
-      {isOpen && (
-        <div 
-          className="md:hidden fixed inset-0 bg-black/50 z-40 transition-opacity duration-300"
-          onClick={toggle}
-          aria-hidden="true"
-        />
-      )}
-      
-      {/* Sidebar */}
-      <div 
-        className={`
-          ${isOpen ? 'w-64' : 'w-20'} 
-          bg-dark-bg h-screen flex flex-col py-8 border-r border-dark-border 
-          fixed left-0 top-0 z-50 transition-all duration-300 ease-in-out
-          md:translate-x-0
-          ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
-        `}
-      >
+    <div 
+      className={`${isOpen ? 'w-64' : 'w-20'} bg-dark-bg h-screen flex flex-col py-8 border-r border-dark-border fixed left-0 top-0 z-50 transition-all duration-300 ease-in-out`}
+    >
       {/* Toggle Button Area */}
       <div className="mb-12 flex justify-center w-full px-4">
         <button 
@@ -107,19 +90,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggle, activePage, onNavigat
           );
         })}
       </div>
-      
-      {/* Close button for mobile */}
-      {isOpen && (
-        <button
-          onClick={toggle}
-          className="md:hidden absolute top-4 right-4 p-2 bg-dark-card rounded-lg text-secondary hover:text-primary transition-colors z-50"
-          aria-label="Close menu"
-        >
-          <X size={20} />
-        </button>
-      )}
     </div>
-    </>
   );
 };
 

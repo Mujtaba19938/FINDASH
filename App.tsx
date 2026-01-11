@@ -209,9 +209,7 @@ const App: React.FC = () => {
         />
         
         <main 
-          className={`flex-1 transition-all duration-300 ease-in-out pr-4 md:pr-8 pl-4 md:pl-8 py-6 max-w-[1600px] mx-auto w-full ${
-            isSidebarOpen ? 'md:ml-64' : 'md:ml-20'
-          }`}
+          className={`flex-1 transition-all duration-300 ease-in-out ${isSidebarOpen ? 'ml-64' : 'ml-20'} pr-8 pl-8 py-6 max-w-[1600px] mx-auto w-full`}
         >
           <Header 
             title={currentPage} 
@@ -223,8 +221,6 @@ const App: React.FC = () => {
             onChatToggle={() => setIsChatOpen(!isChatOpen)}
             onLogout={handleLogout}
             user={user}
-            onMenuToggle={() => setIsSidebarOpen(!isSidebarOpen)}
-            isMenuOpen={isSidebarOpen}
           />
           
           {currentPage === 'Dashboard' && (
